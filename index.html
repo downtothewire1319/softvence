@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softvence Agency | Shopify Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap');
+
+        * {
+            font-family: 'Outfit', 'Space Grotesk', system-ui, sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f0a1a 0%, #1a1035 30%, #2d1b4e 60%, #1a1035 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .service-icon {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.2));
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(99, 102, 241, 0.4));
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1, #8b5cf6);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 50%;
+            animation: float-particle 15s infinite linear;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 10, 26, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03) translateY(-4px);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .faq-item[open] {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.08);
+        }
+
+        .nav-blur {
+            background: rgba(15, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 40%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a1035 50%, #0f0a1a 100%);
+            position: relative;
+        }
+
+        .cta-gradient::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(99, 102, 241, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+        }
+
+        /* Service section - new background */
+        .services-bg {
+            background: linear-gradient(180deg, #0f0a1a 0%, #1a1035 30%, #0f0a1a 100%);
+        }
+
+        .services-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0f0a1a] text-zinc-200">
+
+    <!-- PARTICLES -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="floating-particle" style="left: 10%; animation-delay: 0s; animation-duration: 12s;"></div>
+        <div class="floating-particle" style="left: 25%; animation-delay: 2s; animation-duration: 18s; width: 6px; height: 6px;"></div>
+        <div class="floating-particle" style="left: 45%; animation-delay: 4s; animation-duration: 14s;"></div>
+        <div class="floating-particle" style="left: 65%; animation-delay: 1s; animation-duration: 16s; width: 5px; height: 5px;"></div>
+        <div class="floating-particle" style="left: 80%; animation-delay: 3s; animation-duration: 20s;"></div>
+        <div class="floating-particle" style="left: 90%; animation-delay: 5s; animation-duration: 13s; width: 7px; height: 7px;"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="nav-blur fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-violet-500/25">
+                    S
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-white">Softvence</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#services" class="text-zinc-300 hover:text-white transition-colors">Services</a>
+                <a href="#projects" class="text-zinc-300 hover:text-white transition-colors">Work</a>
+                <a href="#testimonials" class="text-zinc-300 hover:text-white transition-colors">Testimonials</a>
+                <a href="#faq" class="text-zinc-300 hover:text-white transition-colors">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+    <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block px-6 py-2.5 text-sm font-semibold text-zinc-300 border border-zinc-700 hover:border-violet-500 hover:text-white rounded-full transition-all">
+        <i class="fab fa-telegram-plane mr-2"></i> Get a Quote
+    </a>
+   
+</div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-zinc-950">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-zinc-950 to-violet-950"></div>
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:60px_60px]">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-5 py-2.5 rounded-3xl text-sm font-medium">
+                        <span class="text-emerald-400">●</span>
+                        Shopify Partners • 50+ Stores Launched
+                    </div>
+                    <h1 class="heading-font text-6xl md:text-7xl font-bold leading-tight mb-6">
+                        Turn your Shopify store into a <span class="text-blue-400">revenue machine</span>
+                    </h1>
+                    <p class="text-xl text-zinc-400 max-w-lg">
+                        Expert design, custom development, dropshipping, and conversion optimization.
+                        Turn visitors into loyal customers.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-5 bg-white text-zinc-900 hover:bg-white/90 font-semibold rounded-2xl text-lg transition-all active:scale-95 flex items-center gap-3">
+                            <span>Start Your Project</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <a href="#projects" class="px-8 py-5 border border-white/30 hover:bg-white/10 text-white font-semibold rounded-2xl text-lg transition-all flex items-center gap-3">
+                            View Our Work
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-10 pt-6">
+                        <div>
+                            <div class="text-4xl font-bold text-white">4.9</div>
+                            <div class="text-sm text-zinc-400">Average Rating</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-white">120+</div>
+                            <div class="text-sm text-zinc-400">Stores Delivered</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-white">340%</div>
+                            <div class="text-sm text-zinc-400">Avg. Revenue Growth</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <div class="relative">
+                        <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-blue-500/20">
+                            <img src="https://picsum.photos/id/1015/800/620" alt="Shopify Store Preview" class="w-full h-auto">
+                        </div>
+                        <div class="absolute -top-6 -right-6 bg-white text-zinc-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold">
+                            <span class="text-emerald-500">↑</span>
+                            287% Sales
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-gradient-to-br from-violet-500 to-blue-600 text-white px-6 py-4 rounded-3xl shadow-xl">
+                            <div class="flex items-center gap-4">
+                                <div class="text-3xl">🚀</div>
+                                <div>
+                                    <div class="font-semibold">Ready in 21 days</div>
+                                    <div class="text-sm opacity-90">Average project timeline</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-20 right-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-32 left-32 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- ===== SERVICES SECTION - UPDATED BG ===== -->
+    <section id="services" class="relative z-10 py-28 overflow-hidden services-bg">
+        <div class="absolute inset-0 pointer-events-none services-bg"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-cogs"></i>
+                    <span>OUR EXPERTISE</span>
+                </div>
+                <h2 class="heading-font text-5xl font-bold text-white mb-4">
+                    Services that drive <span class="gradient-text">real results</span>
+                </h2>
+                <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    Comprehensive Shopify solutions designed to boost your sales and grow your brand
+                </p>
+            </div>
+
+            <!-- Service Categories Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterServices('all', this)" class="service-tab active px-6 py-2.5 rounded-full text-sm font-medium bg-blue-600 text-white transition-all shadow-lg shadow-blue-600/25">
+                    <i class="fas fa-th-large mr-2"></i> All Services
+                </button>
+                <button onclick="filterServices('design', this)" class="service-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-palette mr-2"></i> Design
+                </button>
+                <button onclick="filterServices('development', this)" class="service-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-code mr-2"></i> Development
+                </button>
+                <button onclick="filterServices('growth', this)" class="service-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-chart-line mr-2"></i> Growth
+                </button>
+                <button onclick="filterServices('marketing', this)" class="service-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-bullhorn mr-2"></i> Marketing
+                </button>
+                <button onclick="filterServices('support', this)" class="service-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-headset mr-2"></i> Support
+                </button>
+            </div>
+
+            <!-- Services Grid -->
+            <div id="servicesContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Service 1: Design & Redesign -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="design">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🎨
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Shopify Design &amp; Redesign</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Transform your store with stunning, conversion-focused designs that captivate customers and drive sales.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Premium theme customization</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Mobile-first responsive design</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Brand identity integration</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Conversion-focused layouts</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $1,499</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2: Custom Theme Development -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="development">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            💻
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Custom Theme Development</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Build a unique, high-performance Shopify theme with custom features and seamless functionality.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Figma → Shopify conversion</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Canva → Shopify implementation</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Advanced Liquid development</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Performance optimized code</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $2,499</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3: Dropshipping Setup -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="growth">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🚀
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Dropshipping Store Setup</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Launch a profitable dropshipping store with winning products and automated systems.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Supplier research &amp; vetting</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Oberlo / DSers integration</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Automated order fulfillment</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Product listing optimization</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $2,999</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4: Conversion & Sales Optimization -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="growth">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            📈
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Conversion &amp; Sales Optimization</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Maximize your revenue with data-driven strategies to increase conversion rates and average order value.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>A/B testing &amp; experimentation</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Cart abandonment recovery</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Upsell &amp; cross-sell strategies</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Checkout optimization</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $1,999</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 5: SEO & Marketing -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="marketing">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🔍
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">SEO &amp; Digital Marketing</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Drive organic traffic and paid conversions with comprehensive SEO and marketing strategies.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Technical &amp; on-page SEO</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Keyword research &amp; strategy</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Google Analytics setup</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Meta &amp; Google Ads integration</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $1,499</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 6: UI/UX Design -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="design">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🛠️
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">UI/UX Design &amp; Prototyping</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Create intuitive, user-friendly interfaces that customers love and that drive conversions.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>User research &amp; testing</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Interactive prototypes</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Accessibility focused design</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Design systems &amp; guidelines</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $1,299</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 7: Performance Optimization -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="development">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            ⚡
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Performance &amp; Speed Optimization</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Supercharge your store's loading speed and performance for better user experience and SEO rankings.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Core Web Vitals optimization</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Image &amp; asset compression</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Code minification &amp; caching</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Third-party script optimization</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $899</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 8: Migration Services -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="development">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🔄
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Shopify Migration Services</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Seamlessly migrate your store from other platforms to Shopify with zero data loss or downtime.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Data migration &amp; mapping</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>URL redirect management</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Theme &amp; design migration</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>SEO preservation</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $1,999</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 9: Ongoing Maintenance -->
+                <div class="service-item group bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10" data-category="support">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative w-16 h-16 bg-gradient-to-br from-blue-500/30 to-indigo-500/30 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                            🛡️
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">Ongoing Support &amp; Maintenance</h3>
+                    <p class="text-zinc-400 leading-relaxed mb-4">Keep your store running smoothly with expert support, updates, and performance monitoring.</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>24/7 monitoring &amp; support</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Security updates &amp; backups</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Performance monitoring</span></li>
+                        <li class="flex items-start gap-3 text-zinc-300"><i class="fas fa-check text-blue-400 mt-1"></i><span>Feature enhancements</span></li>
+                    </ul>
+                    <div class="mt-6 pt-6 border-t border-white/5">
+                        <span class="text-xs text-blue-400 font-medium">Starting at $499/mo</span>
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="mt-3 w-full py-2.5 bg-white/5 hover:bg-blue-600 text-white font-medium rounded-xl transition-all border border-white/5 hover:border-blue-500">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA within Services -->
+            <div class="mt-16 text-center">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-8 py-6 max-w-3xl mx-auto">
+                    <div class="text-left">
+                        <div class="text-sm text-zinc-400">Need a custom solution?</div>
+                        <div class="text-lg font-semibold text-white">We build tailored solutions for your business</div>
+                    </div>
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:scale-105 transition-all shadow-lg shadow-blue-600/25 whitespace-nowrap">
+                        Get Custom Quote
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="text-center bg-white/5 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-blue-500/20 transition-all">
+                    <div class="text-3xl font-bold text-blue-400">500+</div>
+                    <div class="text-sm text-zinc-400 mt-1">Projects Delivered</div>
+                </div>
+                <div class="text-center bg-white/5 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-blue-500/20 transition-all">
+                    <div class="text-3xl font-bold text-blue-400">4.9★</div>
+                    <div class="text-sm text-zinc-400 mt-1">Client Rating</div>
+                </div>
+                <div class="text-center bg-white/5 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-blue-500/20 transition-all">
+                    <div class="text-3xl font-bold text-blue-400">97%</div>
+                    <div class="text-sm text-zinc-400 mt-1">Client Retention</div>
+                </div>
+                <div class="text-center bg-white/5 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-blue-500/20 transition-all">
+                    <div class="text-3xl font-bold text-blue-400">12+</div>
+                    <div class="text-sm text-zinc-400 mt-1">Industries Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section id="projects" class="relative z-10 py-28 overflow-hidden bg-gradient-to-b from-[#0f0a1a] to-[#1a1035]">
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-r from-violet-600/5 to-transparent rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-l from-indigo-600/5 to-transparent rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-violet-400 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-rocket"></i>
+                    <span>OUR PORTFOLIO</span>
+                </div>
+                <h2 class="heading-font text-5xl font-bold text-white mb-4">
+                    Projects we're <span class="gradient-text">proud of</span>
+                </h2>
+                <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    Real results for real brands. See how we've transformed Shopify stores across industries.
+                </p>
+            </div>
+
+            <!-- Project Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterProjects('all', this)" class="project-tab active px-6 py-2.5 rounded-full text-sm font-medium bg-violet-600 text-white transition-all">
+                    All Projects
+                </button>
+                <button onclick="filterProjects('ecommerce', this)" class="project-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-shopping-bag mr-2"></i> E-Commerce
+                </button>
+                <button onclick="filterProjects('dropshipping', this)" class="project-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-box mr-2"></i> Dropshipping
+                </button>
+                <button onclick="filterProjects('custom', this)" class="project-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-code mr-2"></i> Custom Builds
+                </button>
+                <button onclick="filterProjects('redesign', this)" class="project-tab px-6 py-2.5 rounded-full text-sm font-medium bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5 transition-all">
+                    <i class="fas fa-paint-brush mr-2"></i> Redesign
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projectsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Cards -->
+                <div class="project-card group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-violet-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/10" data-category="ecommerce redesign">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&h=500&fit=crop" alt="LuxeHome Co." class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f0a1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="bg-emerald-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Live</span>
+                            <span class="bg-violet-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Featured</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 flex gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">+340%</div>
+                                <div class="text-xs text-zinc-400">Revenue Growth</div>
+                            </div>
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">4.7%</div>
+                                <div class="text-xs text-zinc-400">Conversion Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white group-hover:text-violet-400 transition-colors">LuxeHome Co.</h3>
+                                <p class="text-sm text-zinc-400">Luxury Home Decor Store</p>
+                            </div>
+                            <span class="text-xs bg-white/5 border border-white/10 text-zinc-400 px-3 py-1 rounded-full">E-Commerce</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Complete Shopify redesign with custom theme development. Implemented advanced product filtering, upsell flows, and optimized checkout.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Redesign</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Custom Theme</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">SEO</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">UI/UX</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                            <div class="flex items-center gap-2 text-xs text-zinc-500">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Completed Dec 2025</span>
+                            </div>
+                            <button onclick="openProjectModal('luxehome')" class="text-violet-400 hover:text-violet-300 text-sm font-medium transition-colors flex items-center gap-1">
+                                View Case Study <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-violet-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/10" data-category="dropshipping">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a1b?w=800&h=500&fit=crop" alt="GlowSkin Lab" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f0a1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="bg-emerald-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Live</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 flex gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">2.3x</div>
+                                <div class="text-xs text-zinc-400">ROI in 3 Months</div>
+                            </div>
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">1.2k</div>
+                                <div class="text-xs text-zinc-400">Orders/Month</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white group-hover:text-violet-400 transition-colors">GlowSkin Lab</h3>
+                                <p class="text-sm text-zinc-400">Premium Skincare Brand</p>
+                            </div>
+                            <span class="text-xs bg-white/5 border border-white/10 text-zinc-400 px-3 py-1 rounded-full">Dropshipping</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Full dropshipping store setup with supplier integration, automated fulfillment, and custom branding. Launched in under 3 weeks.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Dropshipping</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Oberlo</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Automation</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">SEO</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                            <div class="flex items-center gap-2 text-xs text-zinc-500">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Completed Nov 2025</span>
+                            </div>
+                            <button onclick="openProjectModal('glowskin')" class="text-violet-400 hover:text-violet-300 text-sm font-medium transition-colors flex items-center gap-1">
+                                View Case Study <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card group relative bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-violet-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-violet-500/10" data-category="custom">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=500&fit=crop" alt="TechVault" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f0a1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute top-4 left-4 flex gap-2">
+                            <span class="bg-emerald-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Live</span>
+                            <span class="bg-violet-500/90 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">Award Winning</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 flex gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">98/100</div>
+                                <div class="text-xs text-zinc-400">PageSpeed Score</div>
+                            </div>
+                            <div class="bg-black/60 backdrop-blur-sm rounded-xl px-4 py-2 flex-1 text-center">
+                                <div class="text-lg font-bold text-emerald-400">+280%</div>
+                                <div class="text-xs text-zinc-400">Organic Traffic</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white group-hover:text-violet-400 transition-colors">TechVault Store</h3>
+                                <p class="text-sm text-zinc-400">Electronics &amp; Gadgets</p>
+                            </div>
+                            <span class="text-xs bg-white/5 border border-white/10 text-zinc-400 px-3 py-1 rounded-full">Custom Build</span>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">Custom Shopify theme developed from Figma designs. Advanced product comparison, dynamic filtering, and custom checkout flows.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Figma → Shopify</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Custom Theme</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">Performance</span>
+                            <span class="text-xs bg-white/5 text-zinc-300 px-3 py-1 rounded-full">UI/UX</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/5">
+                            <div class="flex items-center gap-2 text-xs text-zinc-500">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Completed Oct 2025</span>
+                            </div>
+                            <button onclick="openProjectModal('techvault')" class="text-violet-400 hover:text-violet-300 text-sm font-medium transition-colors flex items-center gap-1">
+                                View Case Study <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS SECTION ===== -->
+    <section id="testimonials" class="relative z-10 py-28 overflow-hidden bg-gradient-to-b from-[#0f0a1a] to-[#1a1035]">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-quote-left"></i>
+                    <span>TESTIMONIALS</span>
+                </div>
+                <h2 class="heading-font text-5xl font-bold text-white mb-4">
+                    What Our <span class="gradient-text">Clients Say</span>
+                </h2>
+                <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    Real stories from real brands who trusted us with their Shopify stores
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card rounded-3xl p-8 relative">
+                    <div class="flex gap-1 text-amber-400 text-lg mb-6">★★★★★</div>
+                    <p class="text-lg leading-relaxed text-zinc-300 mb-8">
+                        "Softvence completely transformed our Shopify store. Our conversion rate went from 1.8% to 4.7% in just 6 weeks."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg">SC</div>
+                        <div>
+                            <div class="font-semibold text-white">Sarah Chen</div>
+                            <div class="text-sm text-zinc-400">Founder, Bloom &amp; Co</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card rounded-3xl p-8 relative">
+                    <div class="flex gap-1 text-amber-400 text-lg mb-6">★★★★★</div>
+                    <p class="text-lg leading-relaxed text-zinc-300 mb-8">
+                        "They built our entire dropshipping store from scratch in under 3 weeks. The attention to detail is unmatched."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">MR</div>
+                        <div>
+                            <div class="font-semibold text-white">Marcus Rodriguez</div>
+                            <div class="text-sm text-zinc-400">CEO, UrbanThread</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card rounded-3xl p-8 relative">
+                    <div class="flex gap-1 text-amber-400 text-lg mb-6">★★★★★</div>
+                    <p class="text-lg leading-relaxed text-zinc-300 mb-8">
+                        "From Figma designs to a fully functional store — they nailed every requirement. Our sales have tripled."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg">PS</div>
+                        <div>
+                            <div class="font-semibold text-white">Priya Sharma</div>
+                            <div class="text-sm text-zinc-400">Founder, Veda Essentials</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section id="faq" class="relative z-10 py-28 overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-blue-400 text-sm font-semibold px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </div>
+                <h2 class="heading-font text-5xl font-bold text-white mb-4">
+                    Frequently Asked <span class="gradient-text">Questions</span>
+                </h2>
+                <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    Everything you need to know about working with Softvence
+                </p>
+            </div>
+
+            <div id="faqContainer" class="space-y-4">
+                <details class="faq-item rounded-2xl p-6 group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        How long does it take to build a Shopify store?
+                        <span class="text-3xl text-blue-400 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div class="mt-4 text-zinc-400 leading-relaxed">
+                        Most projects take between 2-6 weeks depending on complexity. We provide a clear timeline during the discovery call.
+                    </div>
+                </details>
+
+                <details class="faq-item rounded-2xl p-6 group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        Do you work with existing Shopify stores?
+                        <span class="text-3xl text-blue-400 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div class="mt-4 text-zinc-400 leading-relaxed">
+                        Yes! We specialize in redesigns, performance optimization, and feature additions for established Shopify stores.
+                    </div>
+                </details>
+
+                <details class="faq-item rounded-2xl p-6 group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        Can you convert my Figma/Canva design to Shopify?
+                        <span class="text-3xl text-blue-400 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div class="mt-4 text-zinc-400 leading-relaxed">
+                        Absolutely. Our developers are experts at pixel-perfect Figma to Shopify Liquid conversions and Canva to Shopify implementations.
+                    </div>
+                </details>
+
+                <details class="faq-item rounded-2xl p-6 group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        What is your pricing structure?
+                        <span class="text-3xl text-blue-400 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div class="mt-4 text-zinc-400 leading-relaxed">
+                        We offer custom quotes based on your specific project requirements. Packages start from $2,999 for complete store builds.
+                    </div>
+                </details>
+
+                <details class="faq-item rounded-2xl p-6 group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        What support do you offer after launch?
+                        <span class="text-3xl text-blue-400 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <div class="mt-4 text-zinc-400 leading-relaxed">
+                        We provide 30 days of free post-launch support, including bug fixes and minor adjustments. Ongoing maintenance packages are also available.
+                    </div>
+                </details>
+            </div>
+
+           
+        </div>
+    </section>
+
+   
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 bg-[#0a0713] border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-violet-500/25">S</div>
+                        <span class="text-3xl font-bold text-white tracking-tight">Softvence</span>
+                    </div>
+                    <p class="text-zinc-400 max-w-sm leading-relaxed">
+                        Premium Shopify agency helping brands launch, scale, and dominate their markets.
+                    </p>
+                    <div class="mt-8 flex gap-6 text-2xl text-zinc-500">
+                        <i class="fab fa-instagram hover:text-violet-400 cursor-pointer transition-colors"></i>
+                        <i class="fab fa-linkedin hover:text-violet-400 cursor-pointer transition-colors"></i>
+                        <i class="fab fa-behance hover:text-violet-400 cursor-pointer transition-colors"></i>
+                        <i class="fab fa-x-twitter hover:text-violet-400 cursor-pointer transition-colors"></i>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-semibold mb-6">Company</h4>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div class="hover:text-white cursor-pointer transition-colors">About Us</div>
+                        <div class="hover:text-white cursor-pointer transition-colors">Our Process</div>
+                        <div class="hover:text-white cursor-pointer transition-colors">Careers</div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-semibold mb-6">Services</h4>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div class="hover:text-white cursor-pointer transition-colors">Store Design</div>
+                        <div class="hover:text-white cursor-pointer transition-colors">Custom Development</div>
+                        <div class="hover:text-white cursor-pointer transition-colors">Dropshipping</div>
+                        <div class="hover:text-white cursor-pointer transition-colors">SEO &amp; Growth</div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3">
+    <h4 class="text-white font-semibold mb-6">Get in touch</h4>
+    <a href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 hover:border-violet-500/50 text-sm text-zinc-300 hover:text-white rounded-full transition-all hover:bg-white/10"> Telegram
+        <i class="fab fa-telegram-plane text-violet-400"></i>
+        @yourusername
+    </a>
+    <div class="mt-12">
+        <div class="text-xs text-zinc-600 tracking-widest">MADE WITH ❤️ FOR SHOPIFY</div>
+    </div>
+</div>
+            </div>
+
+            <div class="border-t border-white/5 mt-20 pt-8 text-xs flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600">
+                <div>© 2026 Softvence Agency. All rights reserved.</div>
+                <div class="flex gap-8">
+                    <div class="hover:text-zinc-400 cursor-pointer transition-colors">Privacy</div>
+                    <div class="hover:text-zinc-400 cursor-pointer transition-colors">Terms</div>
+                    <div class="hover:text-zinc-400 cursor-pointer transition-colors">Accessibility</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== SERVICE FILTER =====
+        function filterServices(category, btn) {
+            document.querySelectorAll('.service-tab').forEach(b => {
+                b.classList.remove('active', 'bg-blue-600', 'text-white');
+                b.classList.add('bg-white/5', 'text-zinc-400');
+                b.classList.remove('shadow-lg', 'shadow-blue-600/25');
+            });
+
+            if (btn) {
+                btn.classList.remove('bg-white/5', 'text-zinc-400');
+                btn.classList.add('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('shadow-lg', 'shadow-blue-600/25');
+            }
+
+            const items = document.querySelectorAll('.service-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const itemCategory = item.dataset.category;
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.95)';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0) scale(1)';
+                    }, 100 + (visibleCount * 80));
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== PROJECT FILTER =====
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.project-tab').forEach(b => {
+                b.classList.remove('active', 'bg-violet-600', 'text-white');
+                b.classList.add('bg-white/5', 'text-zinc-400');
+            });
+
+            if (btn) {
+                btn.classList.remove('bg-white/5', 'text-zinc-400');
+                btn.classList.add('active', 'bg-violet-600', 'text-white');
+            }
+
+            const items = document.querySelectorAll('.project-card');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const itemCategory = item.dataset.category;
+                if (category === 'all' || itemCategory.includes(category)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(30px) scale(0.95)';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0) scale(1)';
+                    }, 100 + (visibleCount * 100));
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== PROJECT MODAL =====
+        const projectData = {
+            'luxehome': {
+                title: 'LuxeHome Co.',
+                category: 'E-Commerce Redesign',
+                description: 'Complete Shopify redesign for a luxury home decor brand.',
+                results: ['340% revenue growth', '4.7% conversion rate', '65% decrease in bounce rate'],
+                technologies: ['Shopify', 'Liquid', 'JavaScript', 'Tailwind CSS', 'Klaviyo'],
+                timeline: '6 weeks',
+                image: 'https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&h=500&fit=crop'
+            },
+            'glowskin': {
+                title: 'GlowSkin Lab',
+                category: 'Dropshipping Setup',
+                description: 'Full dropshipping store launch with supplier integration.',
+                results: ['2.3x ROI in 3 months', '1,200+ monthly orders', '4.5★ product ratings'],
+                technologies: ['Shopify', 'Oberlo', 'DSers', 'Mailchimp', 'Zendesk'],
+                timeline: '3 weeks',
+                image: 'https://images.unsplash.com/photo-1556228720-195a672e8a1b?w=800&h=500&fit=crop'
+            },
+            'techvault': {
+                title: 'TechVault Store',
+                category: 'Custom Development',
+                description: 'Custom Shopify theme built from Figma designs.',
+                results: ['98/100 PageSpeed score', '280% increase in organic traffic', '45% higher conversion rate'],
+                technologies: ['Figma', 'Liquid', 'React', 'GraphQL', 'Shopify'],
+                timeline: '8 weeks',
+                image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=500&fit=crop'
+            }
+        };
+
+        function openProjectModal(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-2xl mb-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <span class="text-sm text-violet-400 font-medium">${project.category}</span>
+                        <h3 class="text-2xl font-bold text-white mt-1">${project.title}</h3>
+                    </div>
+                    <span class="text-sm bg-white/5 border border-white/10 text-zinc-400 px-3 py-1 rounded-full">${project.timeline}</span>
+                </div>
+                <p class="text-zinc-300 leading-relaxed mb-6">${project.description}</p>
+                <div class="mb-6">
+                    <h4 class="text-sm font-semibold text-white mb-3">Key Results</h4>
+                    <div class="flex flex-wrap gap-3">
+                        ${project.results.map(result => `
+                            <span class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-xl text-sm">${result}</span>
+                        `).join('')}
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-3">Technologies Used</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${project.technologies.map(tech => `
+                            <span class="bg-white/5 border border-white/10 text-zinc-300 px-3 py-1 rounded-full text-sm">${tech}</span>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-white/5 flex gap-4">
+                    <button onclick="closeProjectModal()" class="flex-1 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-medium rounded-xl transition-colors">Close</button>
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); closeProjectModal();" class="flex-1 px-6 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-medium rounded-xl transition-all">
+                        Start a Similar Project
+                    </button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) closeProjectModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeProjectModal();
+        });
+
+        // ===== INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Service tabs
+            const firstServiceTab = document.querySelector('.service-tab');
+            if (firstServiceTab) {
+                firstServiceTab.classList.add('active', 'bg-blue-600', 'text-white');
+                firstServiceTab.classList.add('shadow-lg', 'shadow-blue-600/25');
+                firstServiceTab.classList.remove('bg-white/5', 'text-zinc-400');
+            }
+
+            // Project tabs
+            const firstProjectTab = document.querySelector('.project-tab');
+            if (firstProjectTab) {
+                firstProjectTab.classList.add('active', 'bg-violet-600', 'text-white');
+                firstProjectTab.classList.remove('bg-white/5', 'text-zinc-400');
+            }
+
+            // Animate service cards
+            const items = document.querySelectorAll('.service-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 + (index * 80));
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+</html>
